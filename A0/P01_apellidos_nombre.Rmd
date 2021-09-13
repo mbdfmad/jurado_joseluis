@@ -46,7 +46,8 @@ length(v)
 # Ejercicio 1
  
 ```{r}
-(dado_honesto <- sample(1:6,size=100,replace = TRUE))
+library(tidyverse)
+dado_honesto <- sample(1:6,size=100,replace = TRUE)
 
 #Frecuencias absolutas
 table(dado_honesto)
