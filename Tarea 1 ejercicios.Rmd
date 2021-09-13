@@ -1,0 +1,36 @@
+---
+title: "Tarea 1 Ejercicios"
+author: "José Luis Jurado Ortiz"
+date: "13/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Ejercicio 1. Análisis exploratorio de un conjunto de datos y operaciones con dplyr.
+
+```{r}
+library(dplyr)
+
+chlstrl = read.csv(url("https://gist.githubusercontent.com/fsansegundo/ee991e53e1a571dd34034c42b5516eae/raw/2206455b5772e90c5a2a24a3f42a84408fd1d1c5/cholesterol.csv"))
+
+dim(chlstrl) 
+summary.default(chlstrl) 
+```
+### Q: Cuántas observaciones contiene?
+### A: Tiene 403 observaciones y 7 columnas
+
+### Q: Cuáles son las variables y de qué tipos?
+### A: 
+###             Length Class  Mode     
+### chol   403    -none- numeric  
+### age    403    -none- numeric  
+### gender 403    -none- character
+### height 403    -none- numeric  
+### weight 403    -none- numeric  
+### waist  403    -none- numeric  
+### hip    403    -none- numeric  
+
+
