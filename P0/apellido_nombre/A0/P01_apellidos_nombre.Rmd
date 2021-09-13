@@ -1,0 +1,124 @@
+---
+title: "Práctica 1, FMAD 2021-2022"
+author: "Apellido, Nombre"
+date: 'Curso 2021-22. Última actualización: `r format(Sys.time(), "%Y-%m-%d")`'
+output:
+  pdf_document: default
+  html_document: default
+subtitle: ICAI. Master en Big Data. Fundamentos Matemáticos del Análisis de Datos
+  (FMAD).
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Ejercicio 0 (ejemplo).
+
+**Enunciado:** Usa la función `seq` de R para fabricar un vector `v` con los múltiplos de 3 del 0 al 300. Muestra los primeros 20 elementos de `v` usando `head` y calcula:
+
++ la suma del vector `v`,
++ su media,
++ y su longitud.
+
+**Respuesta:**
+
+```{r}
+v = seq(from = 0, to = 300, by = 3)
+head(v, 20)
+```
+
+Suma de `v`
+```{r}
+sum(v)
+```
+
+Media:
+```{r}
+mean(v)
+```
+
+Longitud:
+```{r}
+length(v)
+```
+ 
+# Ejercicio 1
+ 
+```{r}
+(dado_honesto <- sample(1:6,size=100,replace = TRUE))
+
+#Frecuencias absolutas
+table(dado_honesto)
+
+dado_honesto <- data.frame(n = dado_honesto)
+dado_honesto %>%
+  count(n)
+
+#Frecuencias relativas
+signif(prop.table(table(dado_honesto$n)), 2)
+```
+ 
+# Ejercicio 2
+
+```{r}
+(dado_cargado <- data.frame(n=sample(1:6,size=100,replace = TRUE, prob = c(1,1,1,1,1,2))))
+
+#Frecuencias absolutas
+table(dado_cargado)
+
+dado_cargado %>%
+  count(n)
+
+#Frecuencias relativas
+signif(prop.table(table(dado_cargado$n)), 2)
+```
+
+# Ejercicio 3
+
+```{r}
+(v1 <- rep(seq(from=4,to=1,by=-1), each = 4))
+(v2 <- rep(seq(from=1,to=5,by=1), times=c(1,2,3,4,5)))
+(v3 <- rep(seq(from=1,to=4,by=1), times = 4))
+```
+
+# Ejercicio 4
+```{r}
+library(tidyverse)
+(mpg2 <- mpg %>% 
+  select(starts_with("c")) %>% 
+  filter(class == "pickup"))
+  
+  
+```
+
+# Ejercicio 5
+```{r}
+library(haven)
+(X <- read_dta(file= "census.dta"))
+
+#5.1
+(poblaciones_agrupadas <- X %>% group_by(region) %>% summarise(suma_poblacion = sum(pop)))
+
+#5.2
+#barplot(names.arg =poblaciones_agrupadas$region,height=poblaciones_agrupadas$suma_poblacion)
+ggplot(data = poblaciones_agrupadas, aes(x=region,y=suma_poblacion)) +
+  geom_bar(stat="identity", position="stack")
+
+#5.3
+head(X)
+X %>% arrange(desc(pop))
+
+#5.4
+(tasa_divorcios_matrimonios <- X %>% select(state,marriage,divorce) %>% mutate(marriage,divorce, tasa = marriage/divorce)) %>% arrange(desc(tasa))
+
+#5.5
+X %>% select(pop,poplt5,pop5_17,pop18p,pop65p,medage) %>% arrange(desc(medage)) %>% head(10)
+
+#5.6
+cortes = seq(min(X$medage), max(X$medage), length.out = 11)
+ggplot(data = X, aes(x=medage)) + 
+  geom_histogram(aes(y=stat(density)), breaks = cortes, fill = "orange", color="black")  + 
+  geom_density(color="red")
+```
+
