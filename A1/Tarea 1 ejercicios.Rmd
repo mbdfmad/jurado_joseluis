@@ -2,7 +2,9 @@
 title: "Tarea 1 Ejercicios"
 author: "José Luis Jurado Ortiz"
 date: "13/9/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}

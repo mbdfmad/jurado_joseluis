@@ -1,0 +1,735 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Tarea 1 Ejercicios},
+  pdfauthor={José Luis Jurado Ortiz},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Tarea 1 Ejercicios}
+\author{José Luis Jurado Ortiz}
+\date{13/9/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{ejercicio-1}{%
+\section{Ejercicio 1}\label{ejercicio-1}}
+
+Análisis exploratorio de un conjunto de datos y operaciones con dplyr.
+
+\hypertarget{ejercicio-1.1-y-1.2}{%
+\subsection{Ejercicio 1.1 y 1.2}\label{ejercicio-1.1-y-1.2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chlstrl }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\FunctionTok{url}\NormalTok{(}\StringTok{"https://gist.githubusercontent.com/fsansegundo/ee991e53e1a571dd34034c42b5516eae/raw/2206455b5772e90c5a2a24a3f42a84408fd1d1c5/cholesterol.csv"}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(chlstrl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   chol age gender height weight waist hip
+## 1  203  46 female     62    121    29  38
+## 2  165  29 female     64    218    46  48
+## 3  228  58 female     61    256    49  57
+## 4   78  67   male     67    119    33  38
+## 5  249  64   male     68    183    44  41
+## 6  248  34   male     71    190    36  42
+\end{verbatim}
+
+\hypertarget{ejercicio-1.3}{%
+\subsection{Ejercicio 1.3}\label{ejercicio-1.3}}
+
+Pregunta. Cuántas observaciones contiene?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(chlstrl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 403   7
+\end{verbatim}
+
+Respuesta. Tiene 403 observaciones y 7 columnas
+
+Pregunta. Cuáles son las variables y de qué tipos?
+
+Respuesta.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary.default}\NormalTok{(chlstrl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Length Class  Mode     
+## chol   403    -none- numeric  
+## age    403    -none- numeric  
+## gender 403    -none- character
+## height 403    -none- numeric  
+## weight 403    -none- numeric  
+## waist  403    -none- numeric  
+## hip    403    -none- numeric
+\end{verbatim}
+
+\hypertarget{ejercicio-1.4}{%
+\subsection{Ejercicio 1.4}\label{ejercicio-1.4}}
+
+Pregunta. Asegúrate de comprobar si hay datos ausentes y localízalos en
+la tabla.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\AttributeTok{nan\_values =} \FunctionTok{which}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(chlstrl)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   28 1273 1296 1405 1441 1527 1774 2352 2409 2755 2812
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{variable\_categorica }\OtherTok{=}\NormalTok{ chlstrl[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Respuesta. índices: 28 1273 1296 1405 1441 1527 1774 2352 2409 2755 2812
+
+\hypertarget{ejercicio-1.5}{%
+\subsection{Ejercicio 1.5}\label{ejercicio-1.5}}
+
+El análisis exploratorio (numérico y gráfico) debe cubrir todos los
+tipos de variable de la tabla. Es decir, que al menos debes estudiar una
+variable por cada tipo de variable presente en la tabla. El análisis
+debe contener, al menos:
+
+-- Para las variables cuantittativas (continuas o discretas). Resumen
+numérico básico. Gráficas (las adecuadas, a ser posible más de un tipo
+de gráfico).
+
+-- Variables categóricas (factores). Tablas de frecuencia (absolutas y
+relativas). Gráficas (diagrama de barras).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{cortes }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FunctionTok{min}\NormalTok{(chlstrl}\SpecialCharTok{$}\NormalTok{height,}\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}\FunctionTok{max}\NormalTok{(chlstrl}\SpecialCharTok{$}\NormalTok{height,}\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{length.out =} \DecValTok{11}\NormalTok{)}
+\FunctionTok{ggplot}\NormalTok{(chlstrl, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(height))}\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =} \FunctionTok{stat}\NormalTok{(density)),}
+                 \AttributeTok{breaks =}\NormalTok{ cortes, }\AttributeTok{fill =} \StringTok{"orange"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{color =} \StringTok{"red"}\NormalTok{,}\AttributeTok{size =} \FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 5 rows containing non-finite values (stat_bin).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 5 rows containing non-finite values (stat_density).
+\end{verbatim}
+
+\includegraphics{Tarea-1-ejercicios_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(chlstrl}\SpecialCharTok{$}\NormalTok{height, }\AttributeTok{col=}\StringTok{"orange"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea-1-ejercicios_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(}\FunctionTok{table}\NormalTok{(chlstrl}\SpecialCharTok{$}\NormalTok{gender))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea-1-ejercicios_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\hypertarget{ejercicio-1.6-y-1.7}{%
+\subsection{Ejercicio 1.6 y 1.7}\label{ejercicio-1.6-y-1.7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{chlstrl\_bmi }\OtherTok{\textless{}{-}}\NormalTok{ chlstrl }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{height =}\NormalTok{ height}\SpecialCharTok{*}\FloatTok{0.0254}\NormalTok{, }\AttributeTok{weight =}\NormalTok{ weight}\SpecialCharTok{*}\FloatTok{0.454}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{bmi =}\NormalTok{ weight}\SpecialCharTok{/}\NormalTok{(height}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(chlstrl\_bmi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   chol age gender height  weight waist hip      bmi
+## 1  203  46 female 1.5748  54.934    29  38 22.15085
+## 2  165  29 female 1.6256  98.972    46  48 37.45286
+## 3  228  58 female 1.5494 116.224    49  57 48.41375
+## 4   78  67   male 1.7018  54.026    33  38 18.65459
+## 5  249  64   male 1.7272  83.082    44  41 27.84977
+## 6  248  34   male 1.8034  86.260    36  42 26.52316
+\end{verbatim}
+
+\hypertarget{ejercicio-1.8}{%
+\subsection{Ejercicio 1.8}\label{ejercicio-1.8}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chlstrl\_ageGroup\_bmi }\OtherTok{\textless{}{-}}\NormalTok{ chlstrl\_bmi }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{ageGroup =} \FunctionTok{ifelse}\NormalTok{(age }\SpecialCharTok{\%in\%} \DecValTok{10}\SpecialCharTok{:}\DecValTok{40}\NormalTok{, }\StringTok{"10\_40"}\NormalTok{, }\FunctionTok{ifelse}\NormalTok{(age }\SpecialCharTok{\%in\%} \DecValTok{40}\SpecialCharTok{:}\DecValTok{70}\NormalTok{,}\StringTok{"40\_70"}\NormalTok{,}\FunctionTok{ifelse}\NormalTok{(age }\SpecialCharTok{\%in\%} \DecValTok{70}\SpecialCharTok{:}\DecValTok{100}\NormalTok{, }\StringTok{"70\_100"}\NormalTok{,}\StringTok{"no"}\NormalTok{))))}
+\FunctionTok{head}\NormalTok{(chlstrl\_ageGroup\_bmi)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   chol age gender height  weight waist hip      bmi ageGroup
+## 1  203  46 female 1.5748  54.934    29  38 22.15085    40_70
+## 2  165  29 female 1.6256  98.972    46  48 37.45286    10_40
+## 3  228  58 female 1.5494 116.224    49  57 48.41375    40_70
+## 4   78  67   male 1.7018  54.026    33  38 18.65459    40_70
+## 5  249  64   male 1.7272  83.082    44  41 27.84977    40_70
+## 6  248  34   male 1.8034  86.260    36  42 26.52316    10_40
+\end{verbatim}
+
+\hypertarget{ejercicio-1.9}{%
+\subsection{Ejercicio 1.9}\label{ejercicio-1.9}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chlstrl\_ageGroup\_bmi }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(gender }\SpecialCharTok{==} \StringTok{"female"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(ageGroup) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{bmi.media =} \FunctionTok{mean}\NormalTok{(bmi,}\AttributeTok{na.rm=}\NormalTok{T),}
+            \AttributeTok{chol.media =} \FunctionTok{mean}\NormalTok{(chol,}\AttributeTok{na.rm=}\NormalTok{T))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 3
+##   ageGroup bmi.media chol.media
+##   <chr>        <dbl>      <dbl>
+## 1 10_40         30.5       189.
+## 2 40_70         30.3       221.
+## 3 70_100        29.4       230.
+\end{verbatim}
+
+\hypertarget{ejercicio-2}{%
+\section{Ejercicio 2}\label{ejercicio-2}}
+
+\hypertarget{ejercicio-2.1}{%
+\subsection{Ejercicio 2.1}\label{ejercicio-2.1}}
+
+Crea una función de R llamada cambiosSigno que dado un vector x de
+números enteros no nulos, como -12, -19, 9, -13, -14, -17, 8, -19, -14,
+calcule cuántos cambios de signo ha habido. Es decir, cuántas veces el
+signo de un elemento es distinto del signo del elemento previo. Por
+ejemplo, en el vector anterior hay 4 cambios de signo (en las posiciones
+3, 4, 7 y 8).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cambiosSigno }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(vector)\{}
+\NormalTok{  counter }\OtherTok{=} \DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (indice }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(vector)) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{sign}\NormalTok{(vector[indice]) }\SpecialCharTok{!=} \FunctionTok{sign}\NormalTok{(vector[indice}\DecValTok{{-}1}\NormalTok{])) \{}
+\NormalTok{      counter }\OtherTok{=}\NormalTok{ counter }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(counter)}
+\NormalTok{\}}
+
+\FunctionTok{cambiosSigno}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{12}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{19}\NormalTok{, }\DecValTok{9}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{13}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{14}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{17}\NormalTok{, }\DecValTok{8}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{19}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{14}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\hypertarget{ejercicio-2.2}{%
+\subsection{Ejercicio 2.2}\label{ejercicio-2.2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cambiosSignoPos }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(vector)\{}
+\NormalTok{  counter }\OtherTok{=} \FunctionTok{c}\NormalTok{()}
+  \ControlFlowTok{for}\NormalTok{ (indice }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(vector)) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{sign}\NormalTok{(vector[indice]) }\SpecialCharTok{!=} \FunctionTok{sign}\NormalTok{(vector[indice}\DecValTok{{-}1}\NormalTok{])) \{}
+\NormalTok{      counter }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(counter,indice)}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(counter)}
+\NormalTok{\}}
+
+\FunctionTok{cambiosSignoPos}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{12}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{19}\NormalTok{, }\DecValTok{9}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{13}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{14}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{17}\NormalTok{, }\DecValTok{8}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{19}\NormalTok{, }\SpecialCharTok{{-}}\DecValTok{14}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4 7 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cambiosSignoPos}\NormalTok{(}\FunctionTok{sample}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{20}\SpecialCharTok{:}\DecValTok{20}\NormalTok{,}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  5  6  9 10
+\end{verbatim}
+
+\hypertarget{ejercicio-3}{%
+\section{Ejercicio 3}\label{ejercicio-3}}
+
+\hypertarget{ejercicio-3.6.1}{%
+\subsection{Ejercicio 3.6.1}\label{ejercicio-3.6.1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(gridExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'gridExtra'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =}\NormalTok{ F, }\AttributeTok{color=}\StringTok{"blue"}\NormalTok{)}
+
+\NormalTok{plot2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =}\NormalTok{ F, }\AttributeTok{color=}\StringTok{"blue"}\NormalTok{, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{group=}\NormalTok{drv))}
+
+\NormalTok{plot3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy, }\AttributeTok{color=}\NormalTok{drv)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =}\NormalTok{ F)}
+
+\NormalTok{plot4 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ drv)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =}\NormalTok{ F)}
+
+\NormalTok{plot5 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{color=}\NormalTok{drv)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{se =}\NormalTok{ F, }\AttributeTok{color=}\StringTok{"blue"}\NormalTok{, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{linetype =}\NormalTok{ drv))}
+
+\NormalTok{plot6 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mpg, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ displ, }\AttributeTok{y =}\NormalTok{ hwy)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{4}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{colour =}\NormalTok{ drv))}
+
+\NormalTok{gridExtra}\SpecialCharTok{::}\FunctionTok{grid.arrange}\NormalTok{(plot1,plot2,plot3,plot4,plot5,plot6,}\AttributeTok{nrow=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Tarea-1-ejercicios_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\hypertarget{ejercicio-5.2.4}{%
+\subsection{Ejercicio 5.2.4}\label{ejercicio-5.2.4}}
+
+Find all flights that
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Had an arrival delay of two or more hours
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{"nycflights13"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.1.4     v purrr   0.3.4
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   2.0.1     v forcats 0.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x gridExtra::combine() masks dplyr::combine()
+## x dplyr::filter()      masks stats::filter()
+## x dplyr::lag()         masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, arr\_delay }\SpecialCharTok{\textgreater{}=} \DecValTok{120}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10,200 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     1     1      811            630       101     1047            830
+##  2  2013     1     1      848           1835       853     1001           1950
+##  3  2013     1     1      957            733       144     1056            853
+##  4  2013     1     1     1114            900       134     1447           1222
+##  5  2013     1     1     1505           1310       115     1638           1431
+##  6  2013     1     1     1525           1340       105     1831           1626
+##  7  2013     1     1     1549           1445        64     1912           1656
+##  8  2013     1     1     1558           1359       119     1718           1515
+##  9  2013     1     1     1732           1630        62     2028           1825
+## 10  2013     1     1     1803           1620       103     2008           1750
+## # ... with 10,190 more rows, and 11 more variables: arr_delay <dbl>,
+## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Flew to Houston (IAH or HOU)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, dest }\SpecialCharTok{==} \StringTok{"IAH"} \SpecialCharTok{||}\NormalTok{ dest }\SpecialCharTok{==} \StringTok{"HOU"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 336,776 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     1     1      517            515         2      830            819
+##  2  2013     1     1      533            529         4      850            830
+##  3  2013     1     1      542            540         2      923            850
+##  4  2013     1     1      544            545        -1     1004           1022
+##  5  2013     1     1      554            600        -6      812            837
+##  6  2013     1     1      554            558        -4      740            728
+##  7  2013     1     1      555            600        -5      913            854
+##  8  2013     1     1      557            600        -3      709            723
+##  9  2013     1     1      557            600        -3      838            846
+## 10  2013     1     1      558            600        -2      753            745
+## # ... with 336,766 more rows, and 11 more variables: arr_delay <dbl>,
+## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Were operated by United, American, or Delta
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, carrier }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"AA"}\NormalTok{, }\StringTok{"DL"}\NormalTok{, }\StringTok{"UA"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 139,504 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     1     1      517            515         2      830            819
+##  2  2013     1     1      533            529         4      850            830
+##  3  2013     1     1      542            540         2      923            850
+##  4  2013     1     1      554            600        -6      812            837
+##  5  2013     1     1      554            558        -4      740            728
+##  6  2013     1     1      558            600        -2      753            745
+##  7  2013     1     1      558            600        -2      924            917
+##  8  2013     1     1      558            600        -2      923            937
+##  9  2013     1     1      559            600        -1      941            910
+## 10  2013     1     1      559            600        -1      854            902
+## # ... with 139,494 more rows, and 11 more variables: arr_delay <dbl>,
+## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Departed in summer (July, August, and September)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, month }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{7}\SpecialCharTok{:}\DecValTok{9}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 86,326 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     7     1        1           2029       212      236           2359
+##  2  2013     7     1        2           2359         3      344            344
+##  3  2013     7     1       29           2245       104      151              1
+##  4  2013     7     1       43           2130       193      322             14
+##  5  2013     7     1       44           2150       174      300            100
+##  6  2013     7     1       46           2051       235      304           2358
+##  7  2013     7     1       48           2001       287      308           2305
+##  8  2013     7     1       58           2155       183      335             43
+##  9  2013     7     1      100           2146       194      327             30
+## 10  2013     7     1      100           2245       135      337            135
+## # ... with 86,316 more rows, and 11 more variables: arr_delay <dbl>,
+## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Arrived more than two hours late, but didn't leave late
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, arr\_delay }\SpecialCharTok{\textgreater{}} \DecValTok{120}\NormalTok{, dep\_delay }\SpecialCharTok{\textless{}=} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 29 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     1    27     1419           1420        -1     1754           1550
+##  2  2013    10     7     1350           1350         0     1736           1526
+##  3  2013    10     7     1357           1359        -2     1858           1654
+##  4  2013    10    16      657            700        -3     1258           1056
+##  5  2013    11     1      658            700        -2     1329           1015
+##  6  2013     3    18     1844           1847        -3       39           2219
+##  7  2013     4    17     1635           1640        -5     2049           1845
+##  8  2013     4    18      558            600        -2     1149            850
+##  9  2013     4    18      655            700        -5     1213            950
+## 10  2013     5    22     1827           1830        -3     2217           2010
+## # ... with 19 more rows, and 11 more variables: arr_delay <dbl>, carrier <chr>,
+## #   flight <int>, tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Were delayed by at least an hour, but made up over 30 minutes in
+  flight
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, dep\_delay }\SpecialCharTok{\textgreater{}=} \DecValTok{60}\NormalTok{, air\_time }\SpecialCharTok{\textgreater{}} \DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 26,657 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     1     1      811            630       101     1047            830
+##  2  2013     1     1      826            715        71     1136           1045
+##  3  2013     1     1      848           1835       853     1001           1950
+##  4  2013     1     1      957            733       144     1056            853
+##  5  2013     1     1     1114            900       134     1447           1222
+##  6  2013     1     1     1120            944        96     1331           1213
+##  7  2013     1     1     1301           1150        71     1518           1345
+##  8  2013     1     1     1337           1220        77     1649           1531
+##  9  2013     1     1     1400           1250        70     1645           1502
+## 10  2013     1     1     1505           1310       115     1638           1431
+## # ... with 26,647 more rows, and 11 more variables: arr_delay <dbl>,
+## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Departed between midnight and 6am (inclusive)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(flights, dep\_time }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{659}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 31,429 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
+##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>
+##  1  2013     1     1      517            515         2      830            819
+##  2  2013     1     1      533            529         4      850            830
+##  3  2013     1     1      542            540         2      923            850
+##  4  2013     1     1      544            545        -1     1004           1022
+##  5  2013     1     1      554            600        -6      812            837
+##  6  2013     1     1      554            558        -4      740            728
+##  7  2013     1     1      555            600        -5      913            854
+##  8  2013     1     1      557            600        -3      709            723
+##  9  2013     1     1      557            600        -3      838            846
+## 10  2013     1     1      558            600        -2      753            745
+## # ... with 31,419 more rows, and 11 more variables: arr_delay <dbl>,
+## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+\end{verbatim}
+
+\end{document}
