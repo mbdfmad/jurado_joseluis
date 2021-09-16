@@ -9,28 +9,229 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##Ejercicio 1. Análisis exploratorio de un conjunto de datos y operaciones con dplyr.
+# Ejercicio 1
 
+Análisis exploratorio de un conjunto de datos y operaciones con dplyr.
+
+
+## Ejercicio 1.1 y 1.2
 ```{r}
 library(dplyr)
 
-chlstrl = read.csv(url("https://gist.githubusercontent.com/fsansegundo/ee991e53e1a571dd34034c42b5516eae/raw/2206455b5772e90c5a2a24a3f42a84408fd1d1c5/cholesterol.csv"))
-
-dim(chlstrl) 
-summary.default(chlstrl) 
+chlstrl <- read.csv(url("https://gist.githubusercontent.com/fsansegundo/ee991e53e1a571dd34034c42b5516eae/raw/2206455b5772e90c5a2a24a3f42a84408fd1d1c5/cholesterol.csv"))
+head(chlstrl)
 ```
-### Q: Cuántas observaciones contiene?
-### A: Tiene 403 observaciones y 7 columnas
 
-### Q: Cuáles son las variables y de qué tipos?
-### A: 
-###             Length Class  Mode     
-### chol   403    -none- numeric  
-### age    403    -none- numeric  
-### gender 403    -none- character
-### height 403    -none- numeric  
-### weight 403    -none- numeric  
-### waist  403    -none- numeric  
-### hip    403    -none- numeric  
 
+## Ejercicio 1.3
+Pregunta. Cuántas observaciones contiene?
+```{r}
+dim(chlstrl)
+```
+Respuesta. Tiene 403 observaciones y 7 columnas
+
+
+
+Pregunta. Cuáles son las variables y de qué tipos?
+
+Respuesta.
+```{r}
+summary.default(chlstrl)
+```
+
+## Ejercicio 1.4
+Pregunta. Asegúrate de comprobar si hay datos ausentes y localízalos en la tabla.
+```{r}
+(nan_values = which(is.na(chlstrl)))
+variable_categorica = chlstrl[3]
+```
+
+Respuesta. índices: 28 1273 1296 1405 1441 1527 1774 2352 2409 2755 2812
+
+
+## Ejercicio 1.5
+El análisis exploratorio (numérico y gráfico) debe cubrir todos los tipos de variable de la tabla. Es
+decir, que al menos debes estudiar una variable por cada tipo de variable presente en la tabla. El
+análisis debe contener, al menos:
+
+– Para las variables cuantittativas (continuas o discretas).
+  Resumen numérico básico.
+  Gráficas (las adecuadas, a ser posible más de un tipo de gráfico).
+
+– Variables categóricas (factores).
+  Tablas de frecuencia (absolutas y relativas).
+  Gráficas (diagrama de barras).
+```{r}
+library(ggplot2)
+cortes = seq(min(chlstrl$height,na.rm = TRUE),max(chlstrl$height,na.rm = TRUE), length.out = 11)
+ggplot(chlstrl, mapping = aes(height))+
+  geom_histogram(aes(y = stat(density)),
+                 breaks = cortes, fill = "orange", color = "black") +
+  geom_density(color = "red",size = 1.5)
+```
+
+```{r}
+boxplot(chlstrl$height, col="orange")
+```
+
+```{r}
+barplot(table(chlstrl$gender))
+```
+
+
+
+## Ejercicio 1.6 y 1.7
+```{r}
+library(dplyr)
+
+chlstrl_bmi <- chlstrl %>% 
+  mutate(height = height*0.0254, weight = weight*0.454) %>% 
+  mutate(bmi = weight/(height^2))
+head(chlstrl_bmi)
+```
+
+
+
+## Ejercicio 1.8
+```{r}
+chlstrl_ageGroup_bmi <- chlstrl_bmi %>% 
+  mutate(ageGroup = ifelse(age %in% 10:40, "10_40", ifelse(age %in% 40:70,"40_70",ifelse(age %in% 70:100, "70_100","no"))))
+head(chlstrl_ageGroup_bmi)
+
+```
+
+
+## Ejercicio 1.9
+```{r}
+chlstrl_ageGroup_bmi %>% 
+  filter(gender == "female") %>% 
+  group_by(ageGroup) %>% 
+    summarise(bmi.media = mean(bmi,na.rm=T),
+            chol.media = mean(chol,na.rm=T))
+```
+
+# Ejercicio 2
+
+## Ejercicio 2.1
+
+Crea una función de R llamada cambiosSigno que dado un vector x de números enteros no nulos, como
+-12, -19, 9, -13, -14, -17, 8, -19, -14,
+calcule cuántos cambios de signo ha habido. Es decir, cuántas veces el signo de un elemento es distinto
+del signo del elemento previo. Por ejemplo, en el vector anterior hay 4 cambios de signo (en las
+posiciones 3, 4, 7 y 8).
+
+```{r}
+cambiosSigno <- function(vector){
+  counter = 0
+  for (indice in 2:length(vector)) {
+    if (sign(vector[indice]) != sign(vector[indice-1])) {
+      counter = counter + 1
+    }
+  }
+  return(counter)
+}
+
+cambiosSigno(c(-12, -19, 9, -13, -14, -17, 8, -19, -14))
+```
+
+## Ejercicio 2.2
+```{r}
+cambiosSignoPos <- function(vector){
+  counter = c()
+  for (indice in 2:length(vector)) {
+    if (sign(vector[indice]) != sign(vector[indice-1])) {
+      counter <- c(counter,indice)
+    }
+  }
+  return(counter)
+}
+
+cambiosSignoPos(c(-12, -19, 9, -13, -14, -17, 8, -19, -14))
+cambiosSignoPos(sample(-20:20,10))
+```
+
+
+# Ejercicio 3
+
+
+## Ejercicio 3.6.1
+```{r}
+library(ggplot2)
+library(gridExtra)
+
+plot1 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth(se = F, color="blue")
+
+plot2 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth(se = F, color="blue", mapping = aes(group=drv))
+
+plot3 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color=drv)) + 
+  geom_point() + 
+  geom_smooth(se = F)
+
+plot4 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(colour = drv)) + 
+  geom_smooth(se = F)
+
+plot5 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(mapping = aes(color=drv)) + 
+  geom_smooth(se = F, color="blue", mapping = aes(linetype = drv))
+
+plot6 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point(size = 4, color = "white") +
+  geom_point(aes(colour = drv))
+
+gridExtra::grid.arrange(plot1,plot2,plot3,plot4,plot5,plot6,nrow=3)
+
+```
+
+## Ejercicio 5.2.4
+
+Find all flights that
+
+1. Had an arrival delay of two or more hours
+```{r}
+library("nycflights13")
+library("tidyverse")
+
+filter(flights, arr_delay >= 120)
+```
+
+
+2. Flew to Houston (IAH or HOU)
+```{r}
+filter(flights, dest == "IAH" || dest == "HOU")
+```
+
+
+3. Were operated by United, American, or Delta
+```{r}
+filter(flights, carrier %in% c("AA", "DL", "UA"))
+```
+
+
+4. Departed in summer (July, August, and September)
+```{r}
+filter(flights, month %in% c(7:9))
+```
+
+
+5. Arrived more than two hours late, but didn’t leave late
+```{r}
+filter(flights, arr_delay > 120, dep_delay <= 0)
+```
+
+
+6. Were delayed by at least an hour, but made up over 30 minutes in flight
+```{r}
+filter(flights, dep_delay >= 60, air_time > 30)
+```
+
+
+7. Departed between midnight and 6am (inclusive)
+```{r}
+filter(flights, dep_time %in% c(0:659))
+```
 
