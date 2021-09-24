@@ -178,17 +178,33 @@ mean(sumaValores)
 (X <- read_csv(url('https://gist.githubusercontent.com/fernandosansegundo/471b4887737cfcec7e9cf28631f2e21e/raw/b3944599d02df494f5903740db5acac9da35bc6f/testResults.csv')))
 ```
 
+La primera de las razones por las que los principios de tidy data es por la combinación de sexo y edad ed la misma columna, para ello lo separaremos en dos columnas, género y edad.
 ```{r}
 firstMod <- X %>% 
-  pivot_wider(names_from = test_number,values_from = c(week1,week2,week3,week4,week5))
+  separate(gender_age, into = c("gender", "age"))
 firstMod
 ```
 
+La segunda de las razones por las que los datos no son tidy data es por la variable week. En cada una de las 5 semanas se han realizado 2 test. Para tranformarlo en tidy debemos de tener una única variable semana y otra variable con la puntuación de los test. Para ello transformaremos la tabla con pivot_longer.
 ```{r}
 secondMod <- firstMod %>% 
-  separate(gender_age, into = c("gender", "age"))
+  pivot_longer(c(week1:week5), names_to = "week", values_to = "results")
 secondMod
 ```
+Ahora, tratamos de borrar week de la variable week.
+
+```{r}
+thirdMod <- secondMod %>% 
+  separate(week, into = c("delete", "week"), convert =TRUE, sep = 4) %>% 
+  select(-delete)
+
+thirdMod$age = as.integer(thirdMod$age)
+thirdMod$test_number = as.integer(thirdMod$test_number)
+thirdMod$results = as.integer(thirdMod$results)
+thirdMod$id = as.integer(thirdMod$id)
+thirdMod
+```
+
 
 # Ejercicio 3. Lectura de R4DS.
 
