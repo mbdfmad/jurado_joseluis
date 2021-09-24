@@ -1,0 +1,283 @@
+---
+title: "Tarea_2"
+author: "José Luis Jurado Ortiz"
+date: "19/9/2021"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones preliminares
+
+  * Empieza abriendo el proyecto de RStudio correspondiente a tu repositorio personal de la asignatura.
+  * En todas las tareas tendrás que repetir un proceso como el descrito en la sección Repite los pasos creando un fichero Rmarkdown para esta práctica de la Práctica00. Puedes releer la sección Practicando la entrega de las Tareas de esa misma práctica para recordar el procedimiento de entrega.
+    
+
+# Ejercicio 1. Simulando variables aleatorias discretas.
+
+**Apartado 1**: La variable aleatoria discreta $X_1$ tiene esta tabla de densidad de probabilidad (es la variable que se usa como ejemplo en la Sesión):
+
+$$
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline
+\text{valor de }X1 & 0 & 1 & 2 & 3 \\
+\hline
+\text{Probabilidad de ese valor }P(X = x_i) & \dfrac{64}{125} &
+\dfrac{48}{125}& \dfrac{12}{125} & \dfrac{1}{125}\rule{0mm}{6mm} \\[3mm]
+\hline
+\end{array}
+$$
+
+Para el cálculo de la media, se utiliza la media poblacional teórica ya que sabemos la población total y la probabilidad de aparición de todos los individuos de esta población. Se calculará con la fórmula:
+$\mu=\sum_1^nx_ip_i$
+```{r}
+(media_teorica = 0*64/125+1*48/125+2*12/125+3*1/125)
+```
+
+Para el cálculo de la varianza teórica, se usará la varianza poblacional con la fórmula:
+$\sigma^2=\sum_{1}^{n} (x_{i}-\mu)^2p_{i}$
+```{r}
+(varianza_teorica = (0-media_teorica)^2*64/125+(1-media_teorica)^2*48/125+(2-media_teorica)^2*12/125+(3-media_teorica)^2*1/125)
+```
+
+**Apartado 2**: Combina `sample` con `replicate` para simular cien mil muestras de tamaño 10 de esta variable $X_1$. Estudia la distribución de las medias muestrales como hemos hecho en ejemplos previos, ilustrando con gráficas la distribución de esas medias muestrales. Cambia después el tamaño de la muestra a 30 y repite el análisis.
+
+Para realizar la simulación, tomamos cien mil muestras de tamaño 10 y posteriormente realizamos la media de dichas muestras.
+```{r}
+k = 100000
+
+mediasMuestrales = replicate(k, { 
+  muestra = sample(0:3, size=10, replace=T, prob = c(64, 48, 12, 1))
+  mean(muestra)
+})
+
+mean(mediasMuestrales)
+```
+
+Las gráficas para ilustrar la simulación son el histograma y una línea que representa la media muestral.
+```{r,message=FALSE,results='hide'}
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r}
+mediasMuestrales %>%
+  as_tibble %>%
+ggplot() +
+  geom_histogram(aes(x = value), bins = 15, fill="orange", color="black") +
+  geom_vline(xintercept = mean(mediasMuestrales),
+             col="blue", linetype="dashed", size=1.5)
+```
+
+Cambiamos el tamaño de la muestra a 30.
+```{r}
+k2 = 100000
+
+mediasMuestrales2 = replicate(k2, { 
+  muestra = sample(0:3, size=30, replace=T, prob = c(64, 48, 12, 1))
+  mean(muestra)
+})
+
+mean(mediasMuestrales2)
+```
+
+```{r}
+mediasMuestrales2 %>%
+  as_tibble %>%
+ggplot() +
+  geom_histogram(aes(x = value), bins = 20, fill="orange", color="black") +
+  geom_vline(xintercept = mean(mediasMuestrales),
+             col="blue", linetype="dashed", size=1.5)
+
+```
+
+**Apartado 3**: La variable aleatoria discreta X2 tiene esta tabla de densidad de probabilidad:
+
+$$
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+\text{valor de }X2 & 0 & 1 & 2 \\
+\hline
+\text{Probabilidad de ese valor }P(X = x_i) & \dfrac{1}{2} &
+\dfrac{1}{4}&  \dfrac{1}{4}\rule{0mm}{6mm} \\[3mm]
+\hline
+\end{array}
+$$
+
+Suponemos que $X_1$ y $X_2$ son independientes. ¿Qué valores puede tomar la suma $X_1$ + $X_2$? ¿Cuál es su
+tabla de probabilidad?
+
+Sabiendo que $X_1$ y $X_2$ son independientes, la probabilidad de la suma es la suma del producto de probabilidades que se puede ver reflado en la siguiente tabla.
+
+$$
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+\text{valor de }X_1 + X_2 & 0 & 1 & 2 & 3 & 4 & 5 \\
+\hline
+P(X = x_i) & \dfrac{1}{2} * \dfrac{64}{125} &
+\dfrac{1}{4} * \dfrac{64}{125} + \dfrac{1}{2} * \dfrac{48}{125}&  \dfrac{1}{4} * \dfrac{64}{125} + \dfrac{1}{4} * \dfrac{48}{125} + 
+\dfrac{1}{2} * \dfrac{12}{125} & \dfrac{1}{2}*\dfrac{1}{125} + \dfrac{1}{4}*\dfrac{12}{125} + \dfrac{1}{4}*\dfrac{48}{125} &
+\dfrac{1}{4}*\dfrac{1}{125} + \dfrac{1}{4}*\dfrac{12}{125} & \dfrac{1}{4}*\dfrac{1}{125}
+\rule{0mm}{6mm} \\[3mm]
+\hline
+\end{array}
+$$
+```{r}
+X1 <- tibble(valor = c(0,1,2), prob = c(1/2,1/4,1/4))
+X2 <- tibble(valor = c(0,1,2,3), prob = c(64/125,48/125,12/125,1/125))
+
+sol <- tibble(valor = c(0:5), prob=c(1/2*64/125,1/2*48/125+64/125*1/4,1/2*12/125+64/125*1/4+1/4*48/125,1/4*12/125+48/125*1/4+1/2*1/125,1/4*1/125+1/4*12/125,1/4*1/125))
+sol
+```
+
+**Apartado 4**: Calcula la media teórica de la suma $X_1$ + $X_2$. Después usa sample y replicate para simular cien mil valores de esta variable suma. Calcula la media de esos valores. Advertencia: no es el mismo tipo de análisis que hemos hecho en el segundo apartado.
+
+La media teórica de la suma $X_1$ y $X_2$ es equivalente a: $E(X+Y) = \mu_x + \mu_y$
+```{r}
+mediaX1 <- X1 %>% 
+  mutate(producto = valor*prob) %>% 
+  summarise(media = sum(producto))
+mediaX1
+
+mediaX2 <- X2 %>% 
+  mutate(producto = valor*prob) %>% 
+  summarise(media = sum(producto))
+mediaX2
+
+(mediaTeorica <- mediaX1+mediaX2)
+```
+
+Realizamos la simulación con cien mil valores de la variable suma y calculamos la media.
+```{r}
+k = 100000
+
+sumaValores = replicate(k,{
+  primerValor = sample(X1$valor,size = 1,prob = X1$prob)
+  segundoValor = sample(X2$valor,size = 1 ,prob = X2$prob)
+  
+  return(primerValor+segundoValor)
+})
+
+mean(sumaValores)
+```
+
+# Ejercicio 2. Datos limpios
+
+* Descarga el fichero de este enlace
+  https://gist.githubusercontent.com/fernandosansegundo/471b4887737cfcec7e9cf28631f2e21e/raw/b3944599d02df494f5903740db5acac9da35bc6f/testResults.csv
+
+* Este fichero contiene las notas de los alumnos de una clase, que hicieron dos tests cada semana durante cinco semanas. La tabla de datos no cumple los principios de *tidy data* que hemos visto en clase. Tu tarea en este ejercicio es explicar por qué no se cumplen y obtener una tabla de datos limpios con la misma información usando *tidyR*.
+  **Indicación**: lee la ayuda de la función `separate` de *tidyR*.
+
+```{r}
+(X <- read_csv(url('https://gist.githubusercontent.com/fernandosansegundo/471b4887737cfcec7e9cf28631f2e21e/raw/b3944599d02df494f5903740db5acac9da35bc6f/testResults.csv')))
+```
+
+```{r}
+firstMod <- X %>% 
+  pivot_wider(names_from = test_number,values_from = c(week1,week2,week3,week4,week5))
+firstMod
+```
+
+```{r}
+secondMod <- firstMod %>% 
+  separate(gender_age, into = c("gender", "age"))
+secondMod
+```
+
+# Ejercicio 3. Lectura de R4DS.
+
+Continuando con nuestra `lectura conjunta` de este libro, si revisas el índice verás que hemos cubierto (holgadamente en algún caso) el contenido de los Capítulos 6, 8, 9, 10 y 11. Todos esos Capítulos son relativamente ligeros. Por eso esta semana conviene detenerse un poco en la lectura de los Capítulos 7 y 12, que son los más densos en información. Y como motivación os proponemos un par de ejercicios, uno por cada uno de esos capítulos.
+
+* Haz el ejercicio 2 de la Sección 7.5.1.1 de R4DS. Las ideas de esa sección son importantes para nuestro trabajo de las próximas sesiones.
+
+Para determinar cuál es la variable más importante para predecir el precio usaremos la correlación y mostraremos un plot de ello con cada una de las variables.
+```{r}
+#Código copiado de internet
+panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
+    usr <- par("usr")
+    on.exit(par(usr))
+    par(usr = c(0, 1, 0, 1))
+    Cor <- abs(cor(x, y))
+    txt <- paste0(prefix, format(c(Cor, 0.123456789), digits = digits)[1])
+    if(missing(cex.cor)) {
+        cex.cor <- 0.4 / strwidth(txt)
+    }
+    text(0.5, 0.5, txt,
+         cex = 1 + cex.cor * Cor)
+}
+
+pairs(diamonds,
+      upper.panel = panel.cor,
+      lower.panel = panel.smooth)
+```
+La mayor correlación de la variable price es con la variable carat (peso del diamante) con un 0'92.
+Además, se correlaciona con corte en un 0.13 que es muy mala correlación.
+
+Para poder responder la pregunta de por qué la combinación del tamaño y el corte lleva a que diamantes de menos calidad sea más caros miremos las gráficas de densidad
+
+```{r}
+plot1 <- ggplot(data=diamonds, mapping = aes(x=cut,y=carat))+
+  geom_boxplot()
+
+plot2 <- ggplot(data = diamonds, mapping = aes(carat)) + 
+  geom_density(mapping = aes(colour = cut))
+
+gridExtra::grid.arrange(plot1,plot2)
+```
+Aparentemente hay diamantes más grandes con una calidad fair. Vamos a mirar el número en cada una.
+```{r}
+ggplot(data = diamonds, mapping = aes(x = carat, y = ..count..)) + 
+  geom_freqpoly(mapping = aes(colour = cut), binwidth=0.1)
+```
+Por lo tanto, el precio del diamante "Fair" es más caro porque hay menos cantidad que el diamante con corte "ideal". Además, los diamantes "Fair" son por lo general más grandes, esto implica que repercute también al precio.
+
+
+
+* Haz el ejercicio 4 de la Sección 12.6.1 de R4DS. ¡Aprovecha el código previo de esa sección para trabajar con datos limpios!
+
+```{r}
+#Código del libro
+who1 <- who %>%
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65, 
+    names_to = "key", 
+    values_to = "cases", 
+    values_drop_na = TRUE
+  ) %>% 
+  mutate(
+    key = stringr::str_replace(key, "newrel", "new_rel")
+  ) %>%
+  separate(key, c("new", "var", "sexage")) %>% 
+  select(-new, -iso2, -iso3) %>% 
+  separate(sexage, c("sex", "age"), sep = 1)
+
+who1
+```
+
+```{r}
+numero_paises = 16
+
+first_countries <- who1 %>% 
+  group_by(country) %>% 
+    summarise(sum_cases = sum(cases)) %>% 
+    arrange(desc(sum_cases)) %>% 
+    top_n(numero_paises)
+
+who1 %>% 
+  group_by(country,year,sex) %>% 
+  filter(country %in% first_countries$country, year>1995) %>% 
+  summarise(sum_cases = sum(cases)) %>% 
+  arrange(desc(sum_cases)) %>% 
+  ggplot(mapping = aes(x=year,y=sum_cases,colour=sex)) +
+  facet_wrap(~ country, nrow = round(sqrt(length(first_countries$country)))) +
+  ylab("Número de casos de tuberculosis") +
+  xlab("Año") +
+  geom_line()
+```
+

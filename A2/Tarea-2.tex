@@ -1,0 +1,532 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Tarea\_2},
+  pdfauthor={José Luis Jurado Ortiz},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Tarea\_2}
+\author{José Luis Jurado Ortiz}
+\date{19/9/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{instrucciones-preliminares}{%
+\section{Instrucciones preliminares}\label{instrucciones-preliminares}}
+
+\begin{itemize}
+\tightlist
+\item
+  Empieza abriendo el proyecto de RStudio correspondiente a tu
+  repositorio personal de la asignatura.
+\item
+  En todas las tareas tendrás que repetir un proceso como el descrito en
+  la sección Repite los pasos creando un fichero Rmarkdown para esta
+  práctica de la Práctica00. Puedes releer la sección Practicando la
+  entrega de las Tareas de esa misma práctica para recordar el
+  procedimiento de entrega.
+\end{itemize}
+
+\hypertarget{ejercicio-1.-simulando-variables-aleatorias-discretas.}{%
+\section{Ejercicio 1. Simulando variables aleatorias
+discretas.}\label{ejercicio-1.-simulando-variables-aleatorias-discretas.}}
+
+\textbf{Apartado 1}: La variable aleatoria discreta \(X_1\) tiene esta
+tabla de densidad de probabilidad (es la variable que se usa como
+ejemplo en la Sesión ):
+
+\begin{table}[]
+\centering
+\begin{tabular}
+valor $X_1$ & 0 & 1 & 2 & 3 \\
+Probabilidad de ese valor *$P(X=x_i)$*&$\frac{64}{125}$&$\frac{48}{125}$&$\frac{12}{125}$&$\frac{1}{125}$
+\end{tabular}
+\end{table}
+
+Para el cálculo de la media, se utiliza la media poblacional teórica ya
+que sabemos la población total y la probabilidad de aparición de todos
+los individuos de esta población. Se calculará con la fórmula:
+\(\mu=\sum_1^nx_ip_i\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\AttributeTok{media\_teorica =} \DecValTok{0}\SpecialCharTok{*}\DecValTok{64}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{*}\DecValTok{48}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{2}\SpecialCharTok{*}\DecValTok{12}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{3}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{125}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6
+\end{verbatim}
+
+Para el cálculo de la varianza teórica, se usará la varianza poblacional
+con la fórmula: \(\sigma^2=\sum_{1}^{n} (x_{i}-\mu)^2p_{i}\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\AttributeTok{varianza\_teorica =}\NormalTok{ (}\DecValTok{0}\SpecialCharTok{{-}}\NormalTok{media\_teorica)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\DecValTok{64}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{media\_teorica)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\DecValTok{48}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\NormalTok{(}\DecValTok{2}\SpecialCharTok{{-}}\NormalTok{media\_teorica)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\DecValTok{12}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\NormalTok{(}\DecValTok{3}\SpecialCharTok{{-}}\NormalTok{media\_teorica)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{125}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.48
+\end{verbatim}
+
+\hypertarget{apartado-2}{%
+\subsection{Apartado 2}\label{apartado-2}}
+
+Para realizar la simulación, tomamos cien mil muestras de tamaño 10 y
+posteriormente realizamos la media de dichas muestras.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k }\OtherTok{=} \DecValTok{100000}
+
+\NormalTok{mediasMuestrales }\OtherTok{=} \FunctionTok{replicate}\NormalTok{(k, \{ }
+\NormalTok{  muestra }\OtherTok{=} \FunctionTok{sample}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{size=}\DecValTok{10}\NormalTok{, }\AttributeTok{replace=}\NormalTok{T, }\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{64}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+  \FunctionTok{mean}\NormalTok{(muestra)}
+\NormalTok{\})}
+
+\FunctionTok{mean}\NormalTok{(mediasMuestrales)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.599991
+\end{verbatim}
+
+Las gráficas para ilustrar la simulación son el histograma y una línea
+que representa la mediamuestral
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.1.4     v dplyr   1.0.7
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   2.0.1     v forcats 0.5.1
+## v purrr   0.3.4
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mediasMuestrales }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  as\_tibble }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value), }\AttributeTok{bins =} \DecValTok{15}\NormalTok{, }\AttributeTok{fill=}\StringTok{"orange"}\NormalTok{, }\AttributeTok{color=}\StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{mean}\NormalTok{(mediasMuestrales),}
+             \AttributeTok{col=}\StringTok{"blue"}\NormalTok{, }\AttributeTok{linetype=}\StringTok{"dashed"}\NormalTok{, }\AttributeTok{size=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea-2_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+Cambiamos el tamaño de la muestra a 30.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k2 }\OtherTok{=} \DecValTok{100000}
+
+\NormalTok{mediasMuestrales2 }\OtherTok{=} \FunctionTok{replicate}\NormalTok{(k2, \{ }
+\NormalTok{  muestra }\OtherTok{=} \FunctionTok{sample}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{size=}\DecValTok{30}\NormalTok{, }\AttributeTok{replace=}\NormalTok{T, }\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{64}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+  \FunctionTok{mean}\NormalTok{(muestra)}
+\NormalTok{\})}
+
+\FunctionTok{mean}\NormalTok{(mediasMuestrales2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.600493
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\NormalTok{mediasMuestrales2 }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  as\_tibble }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value), }\AttributeTok{bins =} \DecValTok{20}\NormalTok{, }\AttributeTok{fill=}\StringTok{"orange"}\NormalTok{, }\AttributeTok{color=}\StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{mean}\NormalTok{(mediasMuestrales),}
+             \AttributeTok{col=}\StringTok{"blue"}\NormalTok{, }\AttributeTok{linetype=}\StringTok{"dashed"}\NormalTok{, }\AttributeTok{size=}\FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Tarea-2_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{apartado-3}{%
+\subsection{Apartado 3}\label{apartado-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{X1 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{valor =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{))}
+\NormalTok{X2 }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{valor =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{64}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{48}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{12}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{125}\NormalTok{))}
+
+\NormalTok{sol }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{valor =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{5}\NormalTok{), }\AttributeTok{prob=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{*}\DecValTok{64}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{*}\DecValTok{48}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{64}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{*}\DecValTok{12}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{64}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{*}\DecValTok{48}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{*}\DecValTok{12}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{48}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{125}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{*}\DecValTok{12}\SpecialCharTok{/}\DecValTok{125}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{*}\DecValTok{1}\SpecialCharTok{/}\DecValTok{125}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#Apartado 4
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mediaX1 }\OtherTok{\textless{}{-}}\NormalTok{ X1 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{producto =}\NormalTok{ valor}\SpecialCharTok{*}\NormalTok{prob) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{media =} \FunctionTok{sum}\NormalTok{(producto))}
+\NormalTok{mediaX1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   media
+##   <dbl>
+## 1  0.75
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mediaX2 }\OtherTok{\textless{}{-}}\NormalTok{ X2 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{producto =}\NormalTok{ valor}\SpecialCharTok{*}\NormalTok{prob) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{media =} \FunctionTok{sum}\NormalTok{(producto))}
+\NormalTok{mediaX2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   media
+##   <dbl>
+## 1   0.6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(mediaTeorica }\OtherTok{\textless{}{-}}\NormalTok{ mediaX1}\SpecialCharTok{+}\NormalTok{mediaX2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   media
+## 1  1.35
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k }\OtherTok{=} \DecValTok{100000}
+
+\NormalTok{sumaValores }\OtherTok{=} \FunctionTok{replicate}\NormalTok{(k,\{}
+\NormalTok{  primerValor }\OtherTok{=} \FunctionTok{sample}\NormalTok{(X1}\SpecialCharTok{$}\NormalTok{valor,}\AttributeTok{size =} \DecValTok{1}\NormalTok{,}\AttributeTok{prob =}\NormalTok{ X1}\SpecialCharTok{$}\NormalTok{prob)}
+\NormalTok{  segundoValor }\OtherTok{=} \FunctionTok{sample}\NormalTok{(X2}\SpecialCharTok{$}\NormalTok{valor,}\AttributeTok{size =} \DecValTok{1}\NormalTok{ ,}\AttributeTok{prob =}\NormalTok{ X2}\SpecialCharTok{$}\NormalTok{prob)}
+  
+  \FunctionTok{return}\NormalTok{(primerValor}\SpecialCharTok{+}\NormalTok{segundoValor)}
+\NormalTok{\})}
+
+\FunctionTok{mean}\NormalTok{(sumaValores)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.3454
+\end{verbatim}
+
+\#Ejercicio 2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{url}\NormalTok{(}\StringTok{\textquotesingle{}https://gist.githubusercontent.com/fernandosansegundo/471b4887737cfcec7e9cf28631f2e21e/raw/b3944599d02df494f5903740db5acac9da35bc6f/testResults.csv\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 200 Columns: 9
+\end{verbatim}
+
+\begin{verbatim}
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (2): name, gender_age
+## dbl (7): id, test_number, week1, week2, week3, week4, week5
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 200 x 9
+##    name           id gender_age test_number week1 week2 week3 week4 week5
+##    <chr>       <dbl> <chr>            <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1 Jacob         108 m_20                 1     8     5     7     5     6
+##  2 Jacob         108 m_20                 2     2     2     4     0     3
+##  3 Michael       490 m_19                 1    10     0     5     4     0
+##  4 Michael       490 m_19                 2     9    10     8    10     9
+##  5 Matthew       424 m_18                 1     6     0     0     1    10
+##  6 Matthew       424 m_18                 2     3     4     2     5     8
+##  7 Joshua        734 m_17                 1    10     2     2     0     6
+##  8 Joshua        734 m_17                 2    10     0     6     8     9
+##  9 Christopher   928 m_20                 1     5     2     0     0     0
+## 10 Christopher   928 m_20                 2     9     9     3    10     4
+## # ... with 190 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\NormalTok{firstMod }\OtherTok{\textless{}{-}}\NormalTok{ X }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ test\_number,}\AttributeTok{values\_from =} \FunctionTok{c}\NormalTok{(week1,week2,week3,week4,week5))}
+
+\NormalTok{firstMod}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 13
+##    name           id gender_age week1_1 week1_2 week2_1 week2_2 week3_1 week3_2
+##    <chr>       <dbl> <chr>        <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+##  1 Jacob         108 m_20             8       2       5       2       7       4
+##  2 Michael       490 m_19            10       9       0      10       5       8
+##  3 Matthew       424 m_18             6       3       0       4       0       2
+##  4 Joshua        734 m_17            10      10       2       0       2       6
+##  5 Christopher   928 m_20             5       9       2       9       0       3
+##  6 Nicholas      492 m_17             1       1       2       5       9       7
+##  7 Andrew        678 m_17             4       6      10      10       6       4
+##  8 Joseph        776 m_17             1       8       1       3       5       1
+##  9 Daniel        549 m_20             5       2       9       0       8      10
+## 10 Tyler         530 m_19             4       6       6      10       8       7
+## # ... with 90 more rows, and 4 more variables: week4_1 <dbl>, week4_2 <dbl>,
+## #   week5_1 <dbl>, week5_2 <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{secondMod }\OtherTok{\textless{}{-}}\NormalTok{ firstMod }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(gender\_age, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"gender"}\NormalTok{, }\StringTok{"age"}\NormalTok{))}
+
+\NormalTok{secondMod}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 100 x 14
+##    name           id gender age   week1_1 week1_2 week2_1 week2_2 week3_1 week3_2
+##    <chr>       <dbl> <chr>  <chr>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+##  1 Jacob         108 m      20          8       2       5       2       7       4
+##  2 Michael       490 m      19         10       9       0      10       5       8
+##  3 Matthew       424 m      18          6       3       0       4       0       2
+##  4 Joshua        734 m      17         10      10       2       0       2       6
+##  5 Christopher   928 m      20          5       9       2       9       0       3
+##  6 Nicholas      492 m      17          1       1       2       5       9       7
+##  7 Andrew        678 m      17          4       6      10      10       6       4
+##  8 Joseph        776 m      17          1       8       1       3       5       1
+##  9 Daniel        549 m      20          5       2       9       0       8      10
+## 10 Tyler         530 m      19          4       6       6      10       8       7
+## # ... with 90 more rows, and 4 more variables: week4_1 <dbl>, week4_2 <dbl>,
+## #   week5_1 <dbl>, week5_2 <dbl>
+\end{verbatim}
+
+\#Ejercicio 3
+
+\#\#Apartado 1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{\#Código copiado de internet}
+\NormalTok{panel.cor }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{, }\AttributeTok{prefix =} \StringTok{""}\NormalTok{, cex.cor, ...) \{}
+\NormalTok{    usr }\OtherTok{\textless{}{-}} \FunctionTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{)}
+    \FunctionTok{on.exit}\NormalTok{(}\FunctionTok{par}\NormalTok{(usr))}
+    \FunctionTok{par}\NormalTok{(}\AttributeTok{usr =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{    Cor }\OtherTok{\textless{}{-}} \FunctionTok{abs}\NormalTok{(}\FunctionTok{cor}\NormalTok{(x, y))}
+\NormalTok{    txt }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(prefix, }\FunctionTok{format}\NormalTok{(}\FunctionTok{c}\NormalTok{(Cor, }\FloatTok{0.123456789}\NormalTok{), }\AttributeTok{digits =}\NormalTok{ digits)[}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{missing}\NormalTok{(cex.cor)) \{}
+\NormalTok{        cex.cor }\OtherTok{\textless{}{-}} \FloatTok{0.4} \SpecialCharTok{/} \FunctionTok{strwidth}\NormalTok{(txt)}
+\NormalTok{    \}}
+    \FunctionTok{text}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{, txt,}
+         \AttributeTok{cex =} \DecValTok{1} \SpecialCharTok{+}\NormalTok{ cex.cor }\SpecialCharTok{*}\NormalTok{ Cor)}
+\NormalTok{\}}
+
+
+\FunctionTok{pairs}\NormalTok{(diamonds,}
+      \AttributeTok{upper.panel =}\NormalTok{ panel.cor,}
+      \AttributeTok{lower.panel =}\NormalTok{ panel.smooth)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{apartado-2-1}{%
+\subsection{Apartado 2}\label{apartado-2-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Código del libro}
+\NormalTok{who1 }\OtherTok{\textless{}{-}}\NormalTok{ who }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}
+    \AttributeTok{cols =}\NormalTok{ new\_sp\_m014}\SpecialCharTok{:}\NormalTok{newrel\_f65, }
+    \AttributeTok{names\_to =} \StringTok{"key"}\NormalTok{, }
+    \AttributeTok{values\_to =} \StringTok{"cases"}\NormalTok{, }
+    \AttributeTok{values\_drop\_na =} \ConstantTok{TRUE}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{key =}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_replace}\NormalTok{(key, }\StringTok{"newrel"}\NormalTok{, }\StringTok{"new\_rel"}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate}\NormalTok{(key, }\FunctionTok{c}\NormalTok{(}\StringTok{"new"}\NormalTok{, }\StringTok{"var"}\NormalTok{, }\StringTok{"sexage"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{new, }\SpecialCharTok{{-}}\NormalTok{iso2, }\SpecialCharTok{{-}}\NormalTok{iso3) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{separate}\NormalTok{(sexage, }\FunctionTok{c}\NormalTok{(}\StringTok{"sex"}\NormalTok{, }\StringTok{"age"}\NormalTok{), }\AttributeTok{sep =} \DecValTok{1}\NormalTok{)}
+
+\NormalTok{who1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2) }
+
+\NormalTok{numero\_paises }\OtherTok{=} \DecValTok{16}
+
+\NormalTok{first\_countries }\OtherTok{\textless{}{-}}\NormalTok{ who1 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(country) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{sum\_cases =} \FunctionTok{sum}\NormalTok{(cases)) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(sum\_cases)) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{top\_n}\NormalTok{(numero\_paises)}
+
+
+\NormalTok{who1 }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(country,year,sex) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(country }\SpecialCharTok{\%in\%}\NormalTok{ first\_countries}\SpecialCharTok{$}\NormalTok{country, year}\SpecialCharTok{\textgreater{}}\DecValTok{1995}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{sum\_cases =} \FunctionTok{sum}\NormalTok{(cases)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(sum\_cases)) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{year,}\AttributeTok{y=}\NormalTok{sum\_cases,}\AttributeTok{colour=}\NormalTok{sex)) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ country, }\AttributeTok{nrow =} \FunctionTok{round}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{length}\NormalTok{(first\_countries}\SpecialCharTok{$}\NormalTok{country)))) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Número de casos de tuberculosis"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Año"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
